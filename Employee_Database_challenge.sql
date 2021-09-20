@@ -1,4 +1,4 @@
--- Use Dictinct with Orderby to remove duplicate rows
+
 SELECT e.emp_no,
 e.first_name,
 e.last_name,
@@ -21,9 +21,25 @@ INTO unique_titles
 FROM retirement_titles
 ORDER BY title, emp_no, to_date DESC;
 
--- Use Dictinct with Orderby to remove duplicate rows
 SELECT COUNT(title), title
 INTO retiring_titles
 FROM unique_titles
 GROUP BY title
 ORDER BY title DESC;
+
+SELECT DISTINCT ON(e.emp_no) e.emp_no,
+e.first_name,
+e.last_name,
+e.birth_date,
+de.from_date,
+de.to_date,
+ti.title
+INTO mentorship_eligibilty
+FROM employees as e
+	INNER JOIN dept_emp as de
+	ON (e.emp_no = de.emp_no)
+	INNER JOIN title as ti
+	ON (de.emp_no = ti.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+  AND (de.to_date = '9999-01-01')
+ORDER BY e.emp_no;
