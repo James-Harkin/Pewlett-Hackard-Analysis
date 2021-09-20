@@ -21,3 +21,9 @@ INTO unique_titles
 FROM retirement_titles
 ORDER BY title, emp_no, to_date DESC;
 
+-- Use Dictinct with Orderby to remove duplicate rows
+SELECT COUNT(title), title
+INTO retiring_titles
+FROM unique_titles
+GROUP BY title
+ORDER BY title DESC;
