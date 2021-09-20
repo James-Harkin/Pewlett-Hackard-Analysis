@@ -1,5 +1,4 @@
 # Pewlett-Hackard-Analysis
-# Overview:
 With the boomer generation approaching retirement age, Bobby's company needs to look ahead and determine the best plan of action for training and replacing employees as they retire.
 
 Summary: 
